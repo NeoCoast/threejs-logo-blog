@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
+import NeocoastLogo from './NeocoastLogo';
 
 export default function App() {
   const [ambientLightIntensity, setAmbientLightIntensity] = useState(0.1);
@@ -13,13 +14,7 @@ export default function App() {
         value={ambientLightIntensity}
       />
       <Canvas>
-        <mesh>
-          <boxGeometry />
-          <meshStandardMaterial color="blue" />
-        </mesh>
-
-        <ambientLight intensity={ambientLightIntensity} />
-        <directionalLight color="white" position={[0, 0, 5]} />
+        <NeocoastLogo ambientLightIntensity={ambientLightIntensity} />
       </Canvas>
     </>
   );
