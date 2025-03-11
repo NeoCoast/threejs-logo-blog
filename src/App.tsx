@@ -8,9 +8,7 @@ export default function App() {
   return (
     <>
       <input
-        onChange={(e) => {
-          setAmbientLightIntensity(e.target.value);
-        }}
+        onChange={(e) => setAmbientLightIntensity(Number(e.target.value))}
         type="number"
         value={ambientLightIntensity}
       />

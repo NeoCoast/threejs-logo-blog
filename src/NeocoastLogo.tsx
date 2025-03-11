@@ -1,11 +1,14 @@
 import { useLoader } from "@react-three/fiber";
 import { SVGLoader } from "three/examples/jsm/Addons.js";
-
-import neocoastLogo from "./assets/neocoastLogo.svg";
 import { OrbitControls } from "@react-three/drei";
 
-const NeocoastLogo = ({ ambientLightIntensity }) => {
+import neocoastLogo from "./assets/neocoastLogo.svg";
 
+const NeocoastLogo = ({
+  ambientLightIntensity,
+}: {
+  ambientLightIntensity: number;
+}) => {
   const { paths } = useLoader(SVGLoader, neocoastLogo);
 
   return (
@@ -22,7 +25,7 @@ const NeocoastLogo = ({ ambientLightIntensity }) => {
           position={[0, 0, 0]}
         >
           {paths.map((path, i) =>
-            path.toShapes().map((shape, j) => (
+            path.toShapes(true).map((shape, j) => (
               <mesh key={`${i}-${j}`}>
                 <extrudeGeometry args={[shape, { depth: 50 }]} />
                 <meshStandardMaterial color={path.color || "blue"} />
